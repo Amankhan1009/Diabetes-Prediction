@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 420px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="number"] {
+            margin-bottom: 15px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        input[type="number"]:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        button {
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #27ae60;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Diabetes Prediction</h2>
+        <form action="/predict" method="POST">
+            <input type="number" name="Pregnancies" placeholder="Pregnancies" step="any" required>
+            <input type="number" name="Glucose" placeholder="Glucose" step="any" required>
+            <input type="number" name="Blood Pressure" placeholder="Blood Pressure" step="any" required>
+            <input type="number" name="Skin Thickness" placeholder="Skin Thickness" step="any" required>
+            <input type="number" name="Insulin" placeholder="Insulin" step="any" required>
+            <input type="number" name="BMI" placeholder="BMI" step="any" required>
+            <input type="number" name="Diabetes Pedigree Function" placeholder="Diabetes PedigreeFunction" step="any" required>
+            <input type="number" name="Age" placeholder="Age" step="any" required>
+          
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+        
+    </div>
+</body>
+</html>
